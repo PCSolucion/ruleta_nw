@@ -1,25 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Ruleta</title>
-  <link rel="stylesheet" href="./style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ruleta de premios para New World">
+    <title>Ruleta de Premios - New World</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-<!-- partial:index.partial.html -->
-<div class="container">
-    <div class="stopper"></div>
-    <div class="roulette-content">
-        <div class="roulette-item-wrapper">
-            <!-- Los items se generarán dinámicamente aquí -->
+    <div class="container">
+        <div class="stopper" aria-hidden="true"></div>
+        <div class="roulette-content">
+            <div class="roulette-item-wrapper" role="list">
+                <!-- Los items se generarán dinámicamente aquí -->
+            </div>
+        </div>
+        <div class="before-spin">
+            <!-- Botones de control se generarán aquí -->
         </div>
     </div>
-    <div class="before-spin">
-    </div>
-</div>
-<!-- partial -->
-<script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-<script src="./items.js"></script>
-<script src="./script.js"></script>
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+    <script src="./items.js"></script>
+    <script src="./script.js"></script>
 </body>
 </html>

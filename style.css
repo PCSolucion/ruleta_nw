@@ -1,3 +1,11 @@
+:root {
+  --primary-color: #fff;
+  --border-color: #557289;
+  --btn-green-border: #939f6d;
+  --btn-red-border: #ca5b4d;
+  --transition-default: all 0.3s;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -5,8 +13,9 @@
 body {
   font-family: system-ui, sans-serif;
   font-size: 18px;
-  color: #fff; 
+  color: var(--primary-color);
   background-color: transparent;
+  overflow: hidden;
 }
 
 html {
@@ -37,25 +46,27 @@ html {
   top: 10px;
   width: 100%;
   height: 100%;
-  transition: all .3s;
+  transition: var(--transition-default);
   margin: 0 0 17px 0;
   overflow: hidden;
 }
 
-.img-wrapper:hover img {
+.img-wrapper:hover {
   cursor: pointer;
+}
+
+.img-wrapper:hover img {
   transform: scale(1.05);
 }
 
 .img-wrapper img {
   width: 95px;
   height: auto;
+  transition: var(--transition-default);
 }
 
-.roulette-subtitle-first {
-  font-size: 11px;
-  font-weight: 700;
-  text-transform: uppercase;
+.roulette-subtitle-first,
+.roulette-subtitle-second {
   position: relative;
   z-index: 1;
   width: 100%;
@@ -63,11 +74,14 @@ html {
   margin: 0 0 11px 0;
 }
 
+.roulette-subtitle-first {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
 .roulette-subtitle-second {
   font-size: 12px;
-  position: relative;
-  bottom: 50px;
-  z-index: 1;
 }
 
 .before-spin {
@@ -92,11 +106,12 @@ html {
   padding: 10px 20px;
   margin-bottom: 20px;
   cursor: pointer;
-  border: 2px solid #557289;
+  border: 2px solid var(--border-color);
   text-decoration: none;
-  transition: all .5s;
+  transition: var(--transition-default);
   border-radius: 5px;
   position: relative;
+  width: 140px;
 }
 
 .btn:hover {
@@ -119,13 +134,21 @@ html {
 }
 
 .btn-green {
-  border-color: #939f6d;
-  background: linear-gradient(to bottom, rgba(140,209,123,1) 0%, rgba(100,186,79,0.65) 50%, rgba(140,209,123,0.3) 100%);
+  border-color: var(--btn-green-border);
+  background: linear-gradient(to bottom, 
+    rgba(140,209,123,1) 0%, 
+    rgba(100,186,79,0.65) 50%, 
+    rgba(140,209,123,0.3) 100%
+  );
 }
 
 .btn-red {
-  border-color: #ca5b4d;
-  background: linear-gradient(to bottom, rgba(235,89,97,1) 0%, rgba(230,1,9,0.65) 50%, rgba(235,89,97,0.3) 100%);
+  border-color: var(--btn-red-border);
+  background: linear-gradient(to bottom, 
+    rgba(235,89,97,1) 0%, 
+    rgba(230,1,9,0.65) 50%, 
+    rgba(235,89,97,0.3) 100%
+  );
 }
 
 .open-case {
@@ -135,15 +158,14 @@ html {
   border: none !important;
 }
 
-.quick-buy,
-.btn-red,
-.btn-green {
-  width: 140px;
-  padding: 5px 0;
-}
-
 .quick-buy {
-  background: linear-gradient(to bottom, rgba(129,198,230,1) 0%, rgba(38,162,220,0.65) 50%, rgba(129,198,230,0.3) 100%);
+  background: linear-gradient(to bottom, 
+    rgba(129,198,230,1) 0%, 
+    rgba(38,162,220,0.65) 50%, 
+    rgba(129,198,230,0.3) 100%
+  );
+  padding: 9px 0;
+  width: 165px;
 }
 
 .stopper {
