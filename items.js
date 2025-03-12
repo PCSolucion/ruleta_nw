@@ -50,7 +50,7 @@ const ruletaItems = [
     },
     {
         background: DEFAULT_BACKGROUND,
-        image: `${CLOUDINARY_URL}v1700984703/Aeternum/piedra_de_luna_tallada_impecable.png`,
+        image: `https://pc-solucion.es/wp-content/uploads/2025/03/blockt53.png`,
         title: "x10 Bloque Prismático",
         subtitle: ""
     },
@@ -62,7 +62,7 @@ const ruletaItems = [
     },
     {
         background: DEFAULT_BACKGROUND,
-        image: `${CLOUDINARY_URL}v1700984703/Aeternum/piedra_de_luna_tallada_impecable.png`,
+        image: `https://pc-solucion.es/wp-content/uploads/2025/03/fooddext51.png`,
         title: "x100 Natillas de Plátano",
         subtitle: ""
     },
@@ -80,7 +80,7 @@ const ruletaItems = [
     },
     {
         background: DEFAULT_BACKGROUND,
-        image: `${CLOUDINARY_URL}v1700984703/Aeternum/piedra_de_luna_tallada_impecable.png`,
+        image: `https://pc-solucion.es/wp-content/uploads/2025/03/timbert53.png`,
         title: "x10 Tablones Prismáticos",
         subtitle: ""
     },
@@ -92,7 +92,7 @@ const ruletaItems = [
     },
     {
         background: DEFAULT_BACKGROUND,
-        image: `${CLOUDINARY_URL}v1700984703/Aeternum/piedra_de_luna_tallada_impecable.png`,
+        image: `https://pc-solucion.es/wp-content/uploads/2025/03/foodintt51.png`,
         title: "x100 Macedonia de Frutas",
         subtitle: ""
     },
@@ -146,7 +146,7 @@ const ruletaItems = [
     },
     {
         background: DEFAULT_BACKGROUND,
-        image: `${CLOUDINARY_URL}v1700984703/Aeternum/piedra_de_luna_tallada_impecable.png`,
+        image: `https://pc-solucion.es/wp-content/uploads/2025/03/foodcont51.png`,
         title: "x100 Parfait de Plátano",
         subtitle: ""
     },
