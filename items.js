@@ -105,7 +105,7 @@ const ruletaItems = [
     {
         background: DEFAULT_BACKGROUND,
         image: `${NWDB_URL}consumable/fooddext5.png`,
-        title: "x50 Albenaja Frita",
+        title: "x20 Albenaja Frita",
         subtitle: ""
     },
     {
@@ -177,7 +177,7 @@ const ruletaItems = [
     {
         background: DEFAULT_BACKGROUND,
         image: `${NWDB_URL}consumable/fooddext5.png`,
-        title: "x50 Albenaja Frita",
+        title: "x15 Albenaja Frita",
         subtitle: ""
     },
     {
