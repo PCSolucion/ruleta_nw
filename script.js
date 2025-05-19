@@ -202,9 +202,11 @@ function obtenerPremioGanador() {
 }
 
 // Función para hacer fade out de un sonido
-function fadeOutSound(sound, duration = 500) {
+function fadeOutSound(sound, duration = 200) {
+    if (!sound) return;
+    
     const startVolume = sound.volume;
-    const fadeOutInterval = 50; // ms
+    const fadeOutInterval = 20; // ms
     const steps = duration / fadeOutInterval;
     const volumeStep = startVolume / steps;
     
@@ -223,6 +225,13 @@ function fadeOutSound(sound, duration = 500) {
 function iniciarRuleta() {
     const ANIMATION_DURATION = 4000; // 4 segundos
     const SPIN_SOUND_DURATION = 3000; // 3 segundos de sonido de spin
+    const TICK_START_DELAY = 2800; // Comenzar el tick un poco antes de que termine el spin
+    
+    // Detener cualquier sonido que esté reproduciéndose
+    Object.values(sounds).forEach(sound => {
+        sound.pause();
+        sound.currentTime = 0;
+    });
     
     // Reproducir sonido de inicio en bucle
     playSound('spin');
@@ -236,42 +245,44 @@ function iniciarRuleta() {
     // Ocultar mensaje anterior si existe
     $("#premio-info").addClass("hidden");
     
-    // Aplicar la transformación
+    // Aplicar la transformación con una curva de aceleración/desaceleración más pronunciada
     $(".roulette-item").css({
-        "transition": `transform ${ANIMATION_DURATION}ms cubic-bezier(0.17, 0.67, 0.12, 0.99)`,
+        "transition": `transform ${ANIMATION_DURATION}ms cubic-bezier(0.2, 0.8, 0.2, 1)`,
         "transform": `translateX(-${spunAmount}px)`
     });
     
-    // Después de SPIN_SOUND_DURATION, hacer la transición al sonido de tick
+    // Programar el inicio del sonido de tick
     setTimeout(() => {
         // Hacer fade out del sonido de spin
-        fadeOutSound(sounds.spin, 300);
-        // Iniciar el sonido de tick con un fade in
+        fadeOutSound(sounds.spin, 200);
+        
+        // Preparar el sonido de tick
         sounds.tick.volume = 0;
         playSound('tick');
-        // Fade in del tick
+        
+        // Fade in del tick más rápido
         const fadeInInterval = setInterval(() => {
             if (sounds.tick.volume < 0.3) {
-                sounds.tick.volume += 0.05;
+                sounds.tick.volume += 0.1; // Incremento más rápido
             } else {
                 clearInterval(fadeInInterval);
             }
-        }, 50);
-    }, SPIN_SOUND_DURATION);
+        }, 30);
+    }, TICK_START_DELAY);
     
     // Variable para controlar si ya se procesó el final de la animación
     let animationEndProcessed = false;
     
     // Esperar a que termine la animación completamente
     $(".roulette-item").one('transitionend', function() {
-        // Si ya se procesó el final de la animación, no hacer nada
         if (animationEndProcessed) return;
         animationEndProcessed = true;
         
-        // Hacer fade out del sonido de tick
-        fadeOutSound(sounds.tick, 200);
+        // Detener el sonido de tick inmediatamente
+        sounds.tick.pause();
+        sounds.tick.currentTime = 0;
         
-        // Pequeña pausa para asegurar que todo está completamente detenido
+        // Pequeña pausa antes de mostrar el premio y reproducir el sonido de victoria
         setTimeout(() => {
             const premioGanador = obtenerPremioGanador();
             mostrarPremio(premioGanador);
@@ -281,7 +292,7 @@ function iniciarRuleta() {
             
             // Limpiar el flag de procesado
             animationEndProcessed = false;
-        }, 100);
+        }, 50); // Reducido a 50ms para una respuesta más inmediata
     });
 }
 
