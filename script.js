@@ -170,8 +170,20 @@ function mostrarPremio(premio) {
     
     const premioInfo = $("#premio-info");
     const premioTexto = premioInfo.find(".premio-texto");
+    
+    // Asegurarse de que el mensaje esté oculto primero
+    premioInfo.addClass("hidden");
+    
+    // Actualizar el texto
     premioTexto.text(premio);
-    premioInfo.removeClass("hidden");
+    
+    // Forzar un reflow
+    void premioInfo[0].offsetWidth;
+    
+    // Mostrar el mensaje con una pequeña animación
+    setTimeout(() => {
+        premioInfo.removeClass("hidden");
+    }, 50);
 }
 
 function obtenerPremioGanador() {
@@ -233,6 +245,9 @@ function iniciarRuleta() {
         sound.currentTime = 0;
     });
     
+    // Ocultar mensaje anterior si existe
+    $("#premio-info").addClass("hidden");
+    
     // Reproducir sonido de inicio en bucle
     playSound('spin');
     
@@ -241,9 +256,6 @@ function iniciarRuleta() {
     const randomValue = Math.floor(Math.random() * (totalItems * 4)) + 1;
     const actualIndex = (randomValue - 1) % totalItems;
     const spunAmount = $(".roulette-item-wrapper").children()[actualIndex].getBoundingClientRect().left - 626.8333129882812 + 138/2;
-    
-    // Ocultar mensaje anterior si existe
-    $("#premio-info").addClass("hidden");
     
     // Aplicar la transformación con una curva de aceleración/desaceleración más pronunciada
     $(".roulette-item").css({
