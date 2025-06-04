@@ -13,6 +13,12 @@ const ruletaItems = [
         subtitle: ""
     },
     {
+        background: GOLD_BACKGROUND,
+        image: `${CLOUDINARY_URL}v1682325800/coin_stack_5000.webp`,
+        title: "x2.000 Gold",
+        subtitle: ""
+    },
+    {
         background: DEFAULT_BACKGROUND,
         image: `${CLOUDINARY_URL}v1700984703/Aeternum/piedra_de_luna_tallada_impecable.png`,
         title: "x10 Piedra de Luna Talladas Impecables",
@@ -68,8 +74,8 @@ const ruletaItems = [
     },
     {
         background: DEFAULT_BACKGROUND,
-        image: `${NWDB_URL}resource/matrix-armort52.png`,
-        title: "x1 Matriz de Armadura",
+        image: `https://res.cloudinary.com/pcsolucion/image/upload/v1745981397/wardcorruptedt5_czrva0.png`,
+        title: "x25 Protección de Corruptos",
         subtitle: ""
     },
     {
@@ -110,8 +116,8 @@ const ruletaItems = [
     },
     {
         background: DEFAULT_BACKGROUND,
-        image: `${NWDB_URL}resource/prismaticscarab.png`,
-        title: "x1 Escarabajo Prismático",
+        image: `https://res.cloudinary.com/pcsolucion/image/upload/v1746531328/coatingancientt5_svd2zv.png`,
+        title: "x20 Protección de Antigüos",
         subtitle: ""
     },
     {
@@ -128,14 +134,14 @@ const ruletaItems = [
     },
     {
         background: DEFAULT_BACKGROUND,
-        image: `${NWDB_URL}resource/goldenscarab.png`,
-        title: "x1 Escarabajo de Oro",
+        image: `https://res.cloudinary.com/pcsolucion/image/upload/v1745981288/coatingcorruptedt5_rgalvp.png`,
+        title: "x20 Revestimientos de Corruptos",
         subtitle: ""
     },
     {
         background: DEFAULT_BACKGROUND,
-        image: `${NWDB_URL}resource/matrix-weapont52.png`,
-        title: "x1 Matriz de Arma",
+        image: `https://res.cloudinary.com/pcsolucion/image/upload/v1746531578/coatingangryeartht5_xgy6ye.png`,
+        title: "x20 Revestimientos de Tierramarga",
         subtitle: ""
     },
     {
@@ -176,8 +182,8 @@ const ruletaItems = [
     },
     {
         background: DEFAULT_BACKGROUND,
-        image: `${NWDB_URL}consumable/fooddext5.png`,
-        title: "x10 Albenaja Frita",
+        image: `https://res.cloudinary.com/pcsolucion/image/upload/v1749005289/fooddext51_xfpzqk.png`,
+        title: "x20 Natillas de Plátano",
         subtitle: ""
     },
     {
