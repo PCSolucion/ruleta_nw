@@ -192,4 +192,9 @@ const ruletaItems = [
         title: "x20 Incienso Potente",
         subtitle: ""
     },
-]; 
+];
+
+botonGirar.addEventListener('click', function() {
+    sonidoRuleta.play();
+    // ... resto del código ...
+}); 
