@@ -43,9 +43,9 @@ const ruletaItems = [
         subtitle: ""
     },
     {
-        background: DEFAULT_BACKGROUND,
-        image: `${NWDB_URL}resource/matrix-jewelryt52.png`,
-        title: "x1 Matriz de Joyería",
+        background: GOLD_BACKGROUND,
+        image: `${CLOUDINARY_URL}v1682325800/coin_stack_5000.webp`,
+        title: "x2.000 Gold",
         subtitle: ""
     },
     {

@@ -165,25 +165,74 @@ function generateItems() {
     }
 }
 
+// Almacén de premios recientes
+const premiosRecientes = [];
+const MAX_PREMIOS = 10;
+
+function cargarPremiosRecientes() {
+    const guardados = localStorage.getItem('premiosRecientes');
+    if (guardados) {
+        try {
+            const arr = JSON.parse(guardados);
+            if (Array.isArray(arr)) {
+                premiosRecientes.splice(0, premiosRecientes.length, ...arr);
+            }
+        } catch (e) { /* ignorar errores de parseo */ }
+    }
+}
+
+function guardarPremiosRecientes() {
+    localStorage.setItem('premiosRecientes', JSON.stringify(premiosRecientes));
+}
+
+// Modifico agregarPremioReciente para guardar en localStorage
+function agregarPremioReciente(premio) {
+    if (!premio) return;
+    const ahora = new Date();
+    const fecha = ahora.toLocaleDateString('es-ES');
+    const hora = ahora.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    premiosRecientes.unshift({ premio, fecha, hora });
+    if (premiosRecientes.length > MAX_PREMIOS) premiosRecientes.pop();
+    actualizarMarquesinaPremios();
+    guardarPremiosRecientes();
+}
+
+function actualizarMarquesinaPremios() {
+    const contenedor = document.getElementById('marquesina-premios');
+    if (!contenedor) return;
+    if (premiosRecientes.length === 0) {
+        contenedor.innerHTML = '<span class="marquesina-texto">Aún no hay premios recientes.</span>';
+        return;
+    }
+    const texto = premiosRecientes.map(p => `🎁 ${p.premio} <span style='color:#c084fc;font-weight:400;'>(${p.fecha} ${p.hora})</span>`).join(' &nbsp;|&nbsp; ');
+    contenedor.innerHTML = `<span class="marquesina-texto">${texto}</span>`;
+}
+
+// Modifico mostrarPremio para registrar el premio en la marquesina
 function mostrarPremio(premio) {
     if (!premio) return;
-    
     const premioInfo = $("#premio-info");
     const premioTexto = premioInfo.find(".premio-texto");
-    
-    // Asegurarse de que el mensaje esté oculto primero
     premioInfo.addClass("hidden");
-    
-    // Actualizar el texto
     premioTexto.text(premio);
-    
-    // Forzar un reflow
+    // Mostrar icono si existe
+    let icono = '';
+    if (typeof ruletaItems !== 'undefined') {
+        const item = ruletaItems.find(i => i.title === premio);
+        if (item && item.image) icono = item.image;
+    }
+    const iconoImg = document.getElementById('premio-icono-img');
+    if (icono) {
+        iconoImg.src = icono;
+        iconoImg.style.display = 'block';
+    } else {
+        iconoImg.style.display = 'none';
+    }
     void premioInfo[0].offsetWidth;
-    
-    // Mostrar el mensaje con una pequeña animación
     setTimeout(() => {
         premioInfo.removeClass("hidden");
     }, 50);
+    agregarPremioReciente(premio);
 }
 
 function obtenerPremioGanador() {
@@ -309,46 +358,35 @@ function iniciarRuleta() {
 }
 
 $(document).ready(function() {
-    // Verificar disponibilidad de sonidos
+    cargarPremiosRecientes();
+    actualizarMarquesinaPremios();
     soundsAvailable = checkSoundsAvailability();
-    
-    // Si los sonidos no están disponibles, deshabilitar los controles
     if (!soundsAvailable) {
         const toggleSoundBtn = document.getElementById('toggleSound');
         const volumeControl = document.getElementById('volumeControl');
-        
         toggleSoundBtn.classList.add('muted');
         toggleSoundBtn.disabled = true;
         toggleSoundBtn.title = 'Sonidos no disponibles';
         volumeControl.disabled = true;
-        
         console.log('Los archivos de sonido no están disponibles. Por favor, asegúrate de que los archivos spin.mp3, tick.mp3 y win.mp3 estén en la carpeta sounds/');
     }
-    
     generateItems();
     $("#premio-info").addClass("hidden");
-    
-    // Asegurarse de que los estilos iniciales estén establecidos
     $(".roulette-item").css({
         "transition": "none",
         "transform": "translateX(0)"
     });
-    
-    // Pequeño retraso antes de iniciar la animación para asegurar que todo está cargado
-    setTimeout(() => {
-        iniciarRuleta();
-    }, 100);
-    
     // Configurar el control de volumen
     const volumeControl = document.getElementById('volumeControl');
     volumeControl.addEventListener('input', (e) => {
         updateVolume(e.target.value);
     });
-    
     // Configurar el botón de silencio
     const toggleSoundBtn = document.getElementById('toggleSound');
     toggleSoundBtn.addEventListener('click', toggleSound);
-    
-    // Establecer volumen inicial
     updateVolume(volumeControl.value);
+    // Conectar el botón de la ruleta (ahora es una imagen)
+    $("#btn-iniciar-ruleta").on('click', function() {
+        iniciarRuleta();
+    });
 });

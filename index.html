@@ -28,6 +28,9 @@
         <div class="before-spin">
             <!-- Botones de control se generarán aquí -->
         </div>
+        <div class="boton-iniciar-wrapper">
+            <img id="btn-iniciar-ruleta" class="boton-recreativa" src="https://res.cloudinary.com/pcsolucion/image/upload/v1749177710/boton_flbrr1.png" alt="Botón iniciar ruleta" style="cursor:pointer;width:168px;height:168px;" />
+        </div>
     </div>
     
     <!-- El mensaje del premio fuera del container para evitar problemas de z-index -->
@@ -45,6 +48,7 @@
                 <span class="divider-line"></span>
             </div>
             <div class="premio-texto-wrapper">
+                <img id="premio-icono-img" src="" alt="Icono Premio" style="display:none;max-width:70px;margin-bottom:10px;">
                 <p class="premio-texto"></p>
             </div>
             <div class="premio-footer">
@@ -55,6 +59,10 @@
                 <span class="premio-sparkle">✨</span>
             </div>
         </div>
+    </div>
+
+    <div id="marquesina-premios" class="marquesina-premios">
+        <!-- Aquí aparecerán los últimos premios -->
     </div>
 
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
