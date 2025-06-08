@@ -389,4 +389,7 @@ $(document).ready(function() {
     $("#btn-iniciar-ruleta").on('click', function() {
         iniciarRuleta();
     });
+    $("#cerrar-premio").on('click', function() {
+        $("#premio-info").addClass("hidden");
+    });
 });
