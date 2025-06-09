@@ -192,6 +192,13 @@ const ruletaItems = [
         title: "x20 Incienso Potente",
         subtitle: ""
     },
+    {
+        background: GOLD_BACKGROUND,
+        image: `${CLOUDINARY_URL}v1682325800/coin_stack_5000.webp`,
+        title: "x5.000 Gold (Raro)",
+        subtitle: "Premio especial",
+        customClass: "roulette-item-narrow"
+    },
 ];
 
 botonGirar.addEventListener('click', function() {

@@ -149,7 +149,7 @@ function generateItems() {
     for (let i = 0; i < repetitions; i++) {
         ruletaItems.forEach(item => {
             const itemHtml = `
-                <div class="roulette-item">
+                <div class="roulette-item${item.customClass ? ' ' + item.customClass : ''}">
                     <div class="img-back">
                         <img src="${item.background}" alt="itemback" class="roulette-item-back">
                     </div>

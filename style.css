@@ -916,3 +916,10 @@ html {
     height: 32px;
   }
 }
+
+.roulette-item-narrow {
+  width: 69px !important;
+  background: linear-gradient(135deg, #ffe066 0%, #ffd700 100%) !important;
+  border: 2px solid #bfa100 !important;
+  box-shadow: 0 0 20px 4px #ffe06699, 0 2px 8px #bfa10055;
+}
